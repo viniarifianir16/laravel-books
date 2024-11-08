@@ -38,6 +38,8 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended('/admin');
             } elseif (Auth::user()->role === 'user') {
                 return redirect()->intended('/user');
+            } elseif (Auth::user()->role === 'agen') {
+                return redirect()->intended('/agen');
             }
         }
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // Route khusus user
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.dashboard');
+});
+
+// Route khusus agen
+Route::middleware(['auth', 'role:agen'])->group(function () {
+    Route::get('/agen', [AgenController::class, 'index'])->name('agen.dashboard');
 });
 
 require __DIR__ . '/auth.php';
